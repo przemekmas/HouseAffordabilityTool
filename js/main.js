@@ -659,8 +659,9 @@ function ShowExpensesSummary() {
 	// Your partner expense summary
 	var partnersMonthlyExpensesContainerId = document.getElementById("PartnersMonthlyExpensesContainerId");
 	var combinedMonthlyExpensesContainerId = document.getElementById("CombinedMonthlyExpensesContainerId");
+	var partnerMonthlyEarnings = document.getElementById("PartnerMonthlyEarningsInputId").value;
+	var combinedMonthlyEarnings = GetNumberFromText(partnerMonthlyEarnings) + GetNumberFromText(monthlyEarnings);
 	var combinedTotalExpenses;
-	var combinedMonthlyEarnings;
 
 	if (showPartnerMonthlyExpenses) {
 		partnersMonthlyExpensesContainerId.style.display = "block";
@@ -670,18 +671,15 @@ function ShowExpensesSummary() {
 		var partnersTotalMonthlyExpensesCellId = document.getElementById("PartnersTotalMonthlyExpensesCellId");
 		partnersTotalMonthlyExpensesCellId.innerText = "£" + GetUKCurrencyFormatForValue(partnerExpensesTotal);
 
-		var partnerMonthlyEarnings = document.getElementById("PartnerMonthlyEarningsInputId").value;
 		var partnerTotalSalaryExpenseCellID = document.getElementById("PartnersTotalSalaryExpenseCellID");
 		partnerTotalSalaryExpenseCellID.innerText = "£" + GetUKCurrencyFormatForValue(partnerMonthlyEarnings);
 
 		var partnerTotalSalaryAfterExpenseCellId = document.getElementById("PartnersTotalSalaryAfterExpenseCellId");
 		partnerTotalSalaryAfterExpenseCellId.innerText = "£" + GetUKCurrencyFormatForValue(GetNumberFromText(partnerMonthlyEarnings) - partnerExpensesTotal);
 
-		// Combined expense summary
 		var combinedTotalExpensesCellId = document.getElementById("CombinedTotalMonthlyExpensesCellId");
 		combinedTotalExpensesCellId.innerText = "£" + GetUKCurrencyFormatForValue(combinedTotalExpenses);
 
-		combinedMonthlyEarnings = GetNumberFromText(partnerMonthlyEarnings) + GetNumberFromText(monthlyEarnings);
 		var combinedTotalSalaryExpenseCellID = document.getElementById("CombinedTotalSalaryExpenseCellID");
 		combinedTotalSalaryExpenseCellID.innerText = "£" + GetUKCurrencyFormatForValue(combinedMonthlyEarnings);
 
@@ -691,7 +689,6 @@ function ShowExpensesSummary() {
 	else {
 		partnersMonthlyExpensesContainerId.style.display = "none";
 		combinedMonthlyExpensesContainerId.style.display = "none";
-		combinedMonthlyEarnings = GetNumberFromText(monthlyEarnings);
 		combinedTotalExpenses = yourExpensesTotal;
 	}
 
