@@ -791,6 +791,9 @@ function InitialiseSavingsSummary() {
 function ShowSummary() {
 	var showSummaryButtonId = document.getElementById("ShowSummaryButtonId");
 	showSummaryButtonId.innerText = "Recalculate Summary";
+	
+	var recalculateButtonId = document.getElementById("RecalculateButtonId");
+	recalculateButtonId.style.display = "block";
 
 	var summaryParentContainerId = document.getElementById("SummaryParentContainerId");
 	summaryParentContainerId.style.display = "block";

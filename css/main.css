@@ -1,9 +1,14 @@
+body{
+	background-color: #f2f2f2;
+}
+
 .houses-background{
 	background-image: url("../images/HousesBackground.jpg");
 	height: 300px;
 	margin-bottom: 30px;
-	filter: blur(2px);
 	background-position: center;
+	background-size: cover;
+	box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.4);	
 }
 
 .monthly-expense-input {
@@ -16,7 +21,6 @@
 	border: 1px solid #ddd;
 	border-radius: 2px;
 	padding: 10px;
-	margin-top: 10px;
 	margin-bottom: 10px;
 }
 
@@ -112,9 +116,9 @@
 .navigation-header {
 	padding-top: 38px;
 	padding-bottom: 38px;
-	background-color: #eee;
-	color: inherit;
-	box-shadow: 0 3px 5px 0 rgba(0,0,0,.2);
+	background-color: #2b2b2b;
+	color: white;
+	border-bottom: 1px solid black;
 }
 
 .navigation-header h1{

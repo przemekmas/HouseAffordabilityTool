@@ -127,7 +127,14 @@
 						<p>Here is a summary of your house costs, savings, and monthly expenses.</p>
 					</div>
 					<div class="panel-body">
+						<button id="RecalculateButtonId" class="btn btn-success custom-button" onclick="ShowSummary()"
+							style="display: none;">Recalculate Summary</button>
+
 						<div class="section-container row" id="SummaryParentContainerId" style="display: none;">
+							<div class="col-md-12">
+								<div class="section-break"></div>
+							</div>
+
 							<div class="col-md-12">
 								<h4 class="h4-custom">House Costs & Savings</h4>
 							</div>
@@ -189,8 +196,10 @@
 									£300,000 without having to pay stamp duty tax.</p>
 
 								<div class="alert alert-info">
-									<span>Please check the government website to get the most up to date
-										information about stamp duty.</span>
+									<span>Please check the government website to get the most up to date information
+										about stamp duty.</span>
+									<span>More information about stamp duty can be found here <a target="_blank"
+											href="https://www.gov.uk/stamp-duty-land-tax">https://www.gov.uk/stamp-duty-land-tax</a></span>
 								</div>
 							</div>
 
@@ -269,7 +278,9 @@
 
 							<div class="col-md-6 summary-information-container">
 								<p>This section should give you an idea of how much you can expect to borrow.
-									You will also be able to find out your monthly mortgage repayments.</p>
+									You will also be able to find out your monthly mortgage repayments. The amount that
+									you can borrow can vary and it might be difficult to get a mortgage if you have
+									adverse credit (Poor credit history).</p>
 								<br>
 
 								<h5 class="h5-custom">Your Monthly Earnings</h5>
@@ -372,8 +383,11 @@
 
 							<div class="col-md-12">
 								<h5 class="h5-custom">Your Monthly Mortgage Repayments</h5>
+								<p>Your monthly mortgage repayments can be seen below. The repayments are calculated
+									based on the property price and the deposit that you have provided. Please feel free
+									to change the mortgage term and the mortgage rate.</p>
 							</div>
-
+							<br>
 							<div class="col-md-8">
 								<div class="slider-container">
 									<h4>Mortgage</h4>
@@ -539,6 +553,10 @@
 									<span>It looks like you should be able to cover all monthly expenses after
 										purchasing your property.</span>
 								</div>
+							</div>
+
+							<div class="col-md-12">
+								<div class="section-break"></div>
 							</div>
 						</div>
 
