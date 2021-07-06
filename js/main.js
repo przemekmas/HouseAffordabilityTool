@@ -791,7 +791,7 @@ function InitialiseSavingsSummary() {
 function ShowSummary() {
 	var showSummaryButtonId = document.getElementById("ShowSummaryButtonId");
 	showSummaryButtonId.innerText = "Recalculate Summary";
-	
+
 	var recalculateButtonId = document.getElementById("RecalculateButtonId");
 	recalculateButtonId.style.display = "block";
 
@@ -802,4 +802,20 @@ function ShowSummary() {
 	ShowMortgageSliderSummary();
 	InitialiseSavingsSummary();
 	ShowExpensesSummary();
+}
+
+function ShowScrollFunction() {
+	var scrollToTopButton = document.getElementById("GoToTopOfThePageId");
+
+	if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+		scrollToTopButton.style.display = "block";
+	}
+	else{
+		scrollToTopButton.style.display = "none";
+	}
+}
+
+function GoToTopOfThePage(){
+	document.body.scrollTop = 0;
+	document.documentElement.scrollTop = 0;
 }

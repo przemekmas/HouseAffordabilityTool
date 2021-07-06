@@ -5,6 +5,7 @@
 	<title>House Affordability Tool</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/main.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -568,6 +569,9 @@
 		</div>
 	</div>
 
+	<button class="top-of-page-button" onclick="GoToTopOfThePage()" id="GoToTopOfThePageId">
+		<i class="fa fa-arrow-up arrow-up-custom"></i>
+	</button>
 </body>
 
 </html>
@@ -601,5 +605,7 @@
 	// Your savings
 	AddMonthlyEarningsElement("SavingsContainerId", "SavingsInputId", "LifeSavingsId", "Your Savings:");
 	AddMonthlyEarningsElement("PartnerSavingsContainerId", "PartnerSavingsInputId", "PartnerLifeSavingsId", "Your Partner's Savings:");
+
+	window.onscroll = function() { ShowScrollFunction() };
 
 </script>
