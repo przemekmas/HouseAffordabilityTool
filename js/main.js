@@ -808,7 +808,7 @@ function ShowScrollFunction() {
 	var scrollToTopButton = document.getElementById("GoToTopOfThePageId");
 
 	if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-		scrollToTopButton.style.display = "block";
+		scrollToTopButton.style.display = "flex";
 	}
 	else{
 		scrollToTopButton.style.display = "none";
