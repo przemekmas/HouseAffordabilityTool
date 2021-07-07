@@ -1,13 +1,48 @@
-body{
+body {
 	background-color: #f2f2f2;
 }
 
-.arrow-up-custom{
+.footer-social-media-parent-container {
+	text-align: left;
+}
+
+.footer-social-media-icons {
+	font-size: 36px;
+}
+
+.footer-section-break {
+	border-bottom: 1px solid white;
+	margin-top: 5px;
+	margin-bottom: 15px;
+}
+
+.footer-paragraph {
+	display: inline-block;
+}
+
+.footer-left-container {
+	text-align: left;
+}
+
+.footer-right-container {
+	text-align: end;
+}
+
+.footer {
+	width: 100%;
+	background-color: #2b2b2b;
+	color: white;
+	text-align: center;
+	padding: 10px;
+	border-top: 1px solid black;
+}
+
+.arrow-up-custom {
 	color: white;
 	font-size: 26px;
 }
 
-.top-of-page-button{
+.top-of-page-button {
 	display: none;
 	position: fixed;
 	right: 30px;
@@ -19,22 +54,22 @@ body{
 	height: 48px;
 	box-shadow: 0 1px 1px rgb(0 0 0 / 5%);
 	background-color: #2b2b2b;
-    justify-content: space-around;
+	justify-content: space-around;
 	align-items: center;
 }
 
-.top-of-page-button:hover{
+.top-of-page-button:hover {
 	background-color: gray;
 	color: white;
 }
 
-.houses-background{
+.houses-background {
 	background-image: url("../images/HousesBackground.jpg");
 	height: 300px;
 	margin-bottom: 30px;
 	background-position: center;
 	background-size: cover;
-	box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.4);	
+	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.4);
 }
 
 .monthly-expense-input {
@@ -43,29 +78,30 @@ body{
 	padding-left: 0px;
 }
 
-.information-container{
+.information-container {
 	border: 1px solid #ddd;
 	border-radius: 2px;
 	padding: 10px;
 	margin-bottom: 10px;
 }
 
-.information-container-repayment{
+.information-container-repayment {
 	color: #474747;
 	font-size: 24px;
 	display: block;
 }
 
-.information-span{
+.information-span {
 	margin-left: 5px;
 }
 
-.custom-button{
+.custom-button {
 	margin-bottom: 5px;
 	display: block;
 }
 
 /* Summary table */
+
 .summary-table {
 	font-family: arial, sans-serif;
 	border-collapse: collapse;
@@ -74,18 +110,18 @@ body{
 	table-layout: fixed;
 }
 
-.summary-table td,
-.summary-table th {
+.summary-table td, .summary-table th {
 	border: 1px solid #dddddd;
 	text-align: left;
 	padding: 8px;
 }
+
 .summary-table .cell-text-right-adjust {
 	text-align: end;
 }
 
 .summary-table tr:nth-child(even) {
-	background-color: rgba(0,0,0,.05);
+	background-color: rgba(0, 0, 0, .05);
 }
 
 .summary-information-container {
@@ -107,28 +143,29 @@ body{
 	display: table-cell;
 }
 
-.house-cost-progress-legend-text{
+.house-cost-progress-legend-text {
 	vertical-align: middle;
 	display: table-cell;
 	padding-left: 10px;
 }
 
-.house-cost-progress-legend-main{
+.house-cost-progress-legend-main {
 	display: block;
 	margin-bottom: 15px;
 }
 
 /* Slider */
-.slider-container{
+
+.slider-container {
 	margin-bottom: 10px;
 }
 
-.slider-span{
+.slider-span {
 	display: block;
 	text-align: center;
 }
 
-.slider-input{
+.slider-input {
 	display: block;
 }
 
@@ -139,6 +176,7 @@ body{
 }
 
 /* Navigation header */
+
 .navigation-header {
 	padding-top: 38px;
 	padding-bottom: 38px;
@@ -147,18 +185,19 @@ body{
 	border-bottom: 1px solid black;
 }
 
-.navigation-header h1{
+.navigation-header h1 {
 	font-size: 63px;
 }
 
-.navigation-header p{
+.navigation-header p {
 	font-size: 21px;
 	margin-bottom: 15px;
 	font-weight: 200;
 }
 
 /* Tooltip */
-.tooltip-icon{
+
+.tooltip-icon {
 	border: 1px solid black;
 	display: inline-block;
 	border-radius: 50%;
@@ -203,27 +242,28 @@ body{
 	visibility: visible;
 }
 
-.section-break{
+.section-break {
 	border-bottom: 1px solid #757575;
 	margin-top: 5px;
 	margin-bottom: 15px;
 }
 
 /* Currency Container */
-.currency-parent-container{
+
+.currency-parent-container {
 	display: table;
 	padding: 5px;
 	padding-left: 10px;
 }
 
-.main-currency-parent-container{
+.main-currency-parent-container {
 	padding-right: 5px;
 	padding-left: 0px;
 	width: 100%;
 	display: inline-block;
 }
 
-.currency-container{
+.currency-container {
 	display: table-cell;
 	width: 0;
 }
@@ -236,13 +276,14 @@ body{
 }
 
 /* Custom Headings */
+
 .h4-custom {
 	font-weight: bold;
 	font-size: 18px;
 	color: #2e2e2e;
 }
 
-.h5-custom{
+.h5-custom {
 	font-weight: bold;
 	font-size: 16px;
 	color: #2e2e2e;
@@ -253,6 +294,16 @@ body{
 }
 
 /* Override bootstrap */
-.alert{
+
+.alert {
 	margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 996px) {
+	.footer-left-container {
+		text-align: center;
+	}
+	.footer-right-container {
+		text-align: center;
+	}
 }
