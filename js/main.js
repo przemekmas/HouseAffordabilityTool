@@ -810,12 +810,19 @@ function ShowScrollFunction() {
 	if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
 		scrollToTopButton.style.display = "flex";
 	}
-	else{
+	else {
 		scrollToTopButton.style.display = "none";
 	}
 }
 
-function GoToTopOfThePage(){
+function GoToTopOfThePage() {
 	document.body.scrollTop = 0;
 	document.documentElement.scrollTop = 0;
+}
+
+function GoToStart() {
+	var houseBackgroundElement = document.getElementById("HousesBackgroundId");
+	var startPosition = houseBackgroundElement.offsetTop + houseBackgroundElement.offsetHeight;
+	document.body.scrollTop = startPosition;
+	document.documentElement.scrollTop = startPosition;
 }
