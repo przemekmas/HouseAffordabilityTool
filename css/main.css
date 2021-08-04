@@ -2,6 +2,10 @@ body {
 	background-color: #f2f2f2;
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 .footer-social-media-parent-container {
 	text-align: left;
 }
