@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>House Affordability Tool</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="icon" href="images/HouseIcon.svg">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="js/main.js"></script>
+</head>
+
+<body>
+	<div class="navigation-header">
+		<div class="container text-center">
+			<h1>House Affordability Tool 🏡</h1>
+			<p>The house affordability tool aims to collect all of your house costs and expenses to figure out if you
+				can afford to take out
+				a mortgage and pay your monthly expenses.</p>
+			<div class="get-started-container">
+				<button class="get-started-button" onclick="GoToStart()">Get Started</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid houses-background" id="HousesBackgroundId">
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="earnings-costs-savings-container">
+				<div class="col-sm-6">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3>Monthly Earnings</h3>
+							<p>Input your monthly and yearly salary to help us figure out how much you could borrow.</p>
+						</div>
+						<div class="panel-body">
+							<div id="MonthlyEarningsId"></div>
+
+							<div id="PartnerMonthlyEarningsId" style="display: none;">
+								<br>
+							</div>
+
+							<button id="AddPartnerMonthlyEarningId" class="btn btn-success custom-button"
+								onclick="AddPartnerMonthlyEarningsElement()">Add Partner Earnings</button>
+							<button style="display: none;" id="RemovePartnerMonthlyEarningId"
+								class="btn btn-danger custom-button"
+								onclick="RemovePartnerMonthlyEarningsElement()">Remove
+								Partner Earnings</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-6">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3>House Costs</h3>
+							<p>Provide the price of the property and your deposit.</p>
+						</div>
+						<div class="panel-body">
+							<div id="UpfrontCostsId"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-6">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3>Savings</h3>
+							<p>Input your savings, excluding your house deposit.</p>
+						</div>
+						<div class="panel-body">
+							<div id="LifeSavingsId"></div>
+							<div id="PartnerLifeSavingsId" style="display: none;"></div>
+
+							<button id="AddPartnerSavingsButtonId" class="btn btn-success custom-button"
+								onclick="AddPartnerSavings()">Add
+								Partner Savings</button>
+							<button id="RemovePartnerSavingsButtonId" style="display: none;"
+								class="btn btn-danger custom-button" onclick="RemovePartnerSavings()">Remove Partner
+								Savings</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-sm-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3>Monthly Expenses</h3>
+						<p>Please provide your monthly expenses such as insurance, phone bills, or
+							credit
+							card payments.</p>
+					</div>
+					<div class="panel-body">
+						<div id="MonthlyExpensesId"></div>
+
+						<button class="btn btn-success custom-button"
+							onclick="AddExpenseElement('MonthlyExpensesId')">Add Expense</button>
+
+						<div style="display: none;" id="PartnerMonthlyExpensesId">
+							<br>
+							<div id="PartnerMonthlyExpensesContentId"></div>
+							<div>
+								<button class="btn btn-success custom-button"
+									onclick="AddPartnerExpenseElement('PartnerMonthlyExpensesContentId')">Add
+									Expense</button>
+							</div>
+						</div>
+
+						<button id="AddPartnerMonthlyExpensesId" class="btn btn-success custom-button"
+							onclick="AddPartnerMonthlyExpensesElement()">Add Partner Expenses</button>
+						<button style="display: none;" id="RemovePartnerMonthlyExpensesId"
+							class="btn btn-danger custom-button" onclick="RemovePartnerMonthlyExpensesElement()">Remove
+							Partner Expenses</button>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="col-sm-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3>Summary</h3>
+						<p>Here is a summary of your house costs, savings, and monthly expenses.</p>
+					</div>
+					<div class="panel-body">
+						<button id="RecalculateButtonId" class="btn btn-success custom-button" onclick="ShowSummary()"
+							style="display: none;">Recalculate Summary</button>
+
+						<div class="section-container row" id="SummaryParentContainerId" style="display: none;">
+							<div class="col-md-12">
+								<div class="section-break"></div>
+							</div>
+
+							<div class="col-md-12">
+								<h4 class="h4-custom">House Costs & Savings</h4>
+							</div>
+
+							<div class="col-md-6 summary-information-container">
+								<p>This section should give you an idea of the costs that you will need to cover
+									before purchasing your home. There are various upfront costs such as your
+									house deposit, solicitor fees and moving fees.</p>
+								<br>
+								<h5 class="h5-custom">House Deposit</h5>
+								<p>The house deposit is needed to pay towards the cost of the property. You will
+									need to pay a deposit between 5% and 10% of the property value.</p>
+								<table class="summary-table">
+									<tr>
+										<th>Price Of The Property</th>
+										<td id="PropertyPriceCellId"></td>
+									</tr>
+									<tr>
+										<th>Your Deposit</th>
+										<td id="DepositCellId"></td>
+									</tr>
+								</table>
+
+								<div id="HouseCostProgressBarId" class="information-container" style="display: none;">
+
+									<div class="house-cost-progress-legend-main">
+										<div class="house-cost-progress-legend-parent">
+											<div class="house-cost-progress-legend" style="background-color: #d9534f;">
+											</div>
+											<span class="house-cost-progress-legend-text">Mortgage Needed</span>
+										</div>
+
+										<div class="house-cost-progress-legend-parent">
+											<div class="house-cost-progress-legend" style="background-color: #5bc0de;">
+											</div>
+											<span class="house-cost-progress-legend-text">Your Deposit</span>
+										</div>
+									</div>
+
+									<p id="HouseCostMortgageRequiredId"></p>
+
+									<div class="progress">
+										<div id="MortgageValueProgressBarId" class="progress-bar progress-bar-danger"
+											role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"
+											style="width:0%">
+										</div>
+										<div id="DepositValueProgressBarId" class="progress-bar progress-bar-info"
+											role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"
+											style="width:0%">
+										</div>
+									</div>
+								</div>
+
+								</br>
+								<h5 class="h5-custom">Stamp Duty</h5>
+								<p>Stamp duty is paid when you are buying a property or land that costs over a
+									certain amount. Stamp duty is a tax that you pay for freehold or leasehold
+									properties. First-time buyers can purchase a property costing up to
+									£300,000 without having to pay stamp duty tax.</p>
+
+								<div class="alert alert-info">
+									<i class="fa fa-info-circle"></i>
+									<span>Please check the government website to get the most up to date information
+										about stamp duty.</span>
+									<span>More information about stamp duty can be found here <a target="_blank"
+											href="https://www.gov.uk/stamp-duty-land-tax">https://www.gov.uk/stamp-duty-land-tax</a></span>
+								</div>
+							</div>
+
+							<div class="col-md-6 summary-information-container">
+								<h5 class="h5-custom margin-top-none">Other Upfront Costs</h5>
+								<p>This section shows a summary of your savings that will be needed for any
+									other upfront costs besides the house deposit. Other house costs include
+									money needed for solicitor or mortgage arrangement fees.</p>
+
+								<table class="summary-table">
+									<tr>
+										<th>Valuation Fee</th>
+										<td>£150 - £1,500</td>
+									</tr>
+									<tr>
+										<th>Surveyor's Fee</th>
+										<td>£400 - £1,500</td>
+									</tr>
+									<tr>
+										<th>Solicitor Fees</th>
+										<td>£800 - £1,500</td>
+									</tr>
+									<tr>
+										<th>Electronic Transfer Fee</th>
+										<td>£40 - £50</td>
+									</tr>
+									<tr>
+										<th>Mortgage Booking Fee</th>
+										<td>£99 - £150</td>
+									</tr>
+									<tr>
+										<th>Mortgage Arrangement Fee</th>
+										<td>£900 - £2,000</td>
+									</tr>
+									<tr>
+										<th>Possible Total Cost</th>
+										<td id="PossibleTotalCostCellId"></td>
+									</tr>
+								</table>
+								<p>You will need to consider and save money for other fees before buying a
+									property. The fees may vary a lot depending on the cost of the property.</p>
+
+								<table class="summary-table">
+									<tr>
+										<th>Your Savings</th>
+										<td id="CurrentSavingsCellId"></td>
+									</tr>
+									<tr id="CurrentPartnerSavingsRowId">
+										<th>Your Partner's Savings</th>
+										<td id="CurrentPartnerSavingsCellId"></td>
+									</tr>
+									<tr>
+										<th>Savings After Upfront Costs</th>
+										<td id="SavingsAfterCostsCellId"></td>
+									</tr>
+								</table>
+
+								<div id="NotEnoughSavingsAlertId" class="alert alert-danger" style="display: none;">
+									<i class="fa fa-exclamation-circle"></i>
+									<span>You don't have enough savings for other upfront costs. Consider saving
+										up more money before purchasing a home.</span>
+								</div>
+								<div id="SavingsReachedAlertId" class="alert alert-success" style="display: none;">
+									<i class="fa fa-check-circle"></i>
+									<span>You have enough money to cover other upfront costs. However, it is
+										advised that you have as much money as possible saved for any other
+										unexpected costs.</span>
+								</div>
+							</div>
+
+							<div class="col-md-12">
+								<div class="section-break"></div>
+							</div>
+
+							<div class="col-md-12">
+								<h4 class="h4-custom">Mortgage & Repayments</h4>
+							</div>
+
+							<div class="col-md-6 summary-information-container">
+								<p>This section should give you an idea of how much you can expect to borrow.
+									You will also be able to find out your monthly mortgage repayments. The amount that
+									you can borrow can vary and it might be difficult to get a mortgage if you have
+									adverse credit (Poor credit history).</p>
+								<br>
+
+								<h5 class="h5-custom">Your Monthly Earnings</h5>
+								<p>Your earnings are used by the mortgage lenders to figure out how much
+									you could borrow. The lenders will take into account your yearly salary and
+									any guaranteed yearly bonus.</p>
+								<table class="summary-table">
+									<tr>
+										<th>Your Annual Salary</th>
+										<td id="AnnualSalaryCellId"></td>
+									</tr>
+									<tr>
+										<th>Your Annual Bonus</th>
+										<td id="AnnualBonusCellId"></td>
+									</tr>
+									<tr>
+										<th>Your Monthly Earnings</th>
+										<td id="MonthlyEarnignsCellId"></td>
+									</tr>
+								</table>
+								<br>
+								<div id="PartnersMonthlyEarningsContainerId">
+									<h5 class="h5-custom">Your Partner's Monthly Earnings</h5>
+									<p>Your partner's earnings are combined with your earnings if you
+										are applying for a mortgage with a partner. The lenders will take your
+										partner's salary and bonus and collate it with your salary and bonus to
+										figure out how much you could borrow.</p>
+									<table class="summary-table">
+										<tr>
+											<th>Partner's Annual Salary</th>
+											<td id="PartnerAnnualSalaryCellId"></td>
+										</tr>
+										<tr>
+											<th>Partner's Annual Bonus</th>
+											<td id="PartnerAnnualBonusCellId"></td>
+										</tr>
+										<tr>
+											<th>Partner's Monthly Earnings</th>
+											<td id="PartnerMonthlyEarnignsCellId"></td>
+										</tr>
+									</table>
+								</div>
+							</div>
+
+							<div class="col-md-6 summary-information-container">
+								<h5 class="h5-custom margin-top-none">Possible Loan Amount</h5>
+								<p>The table below gives you an indication of how much you could borrow based on
+									your annual salary. Most mortgage lenders will lend you 4x or 4.5x of your
+									annual salary.</p>
+								<table class="summary-table">
+									<tr>
+										<td></td>
+										<th>Salary</th>
+										<th>With Deposit</th>
+									</tr>
+									<tr>
+										<th>4x</th>
+										<td id="PLACell4x"></td>
+										<td id="PLAWDCell4x"></td>
+									</tr>
+									<tr>
+										<th>4.5x</th>
+										<td id="PLACell45x"></td>
+										<td id="PLAWDCell45x"></td>
+									</tr>
+								</table>
+
+								<br>
+								<h5 class="h5-custom">Possible Loan Amount (With Annual Bonus)</h5>
+								<p>The table below gives you an indication of how much you could borrow based on
+									your annual salary and your guaranteed annual bonus. Most lenders will
+									consider your bonus when applying for a mortgage.</p>
+								<table class="summary-table">
+									<tr>
+										<td></td>
+										<th>Salary With Bonus</th>
+										<th>With Deposit</th>
+									</tr>
+									<tr>
+										<th>4x</th>
+										<td id="PLAWBCell4x"></td>
+										<td id="PLAWBWDCell4x"></td>
+									</tr>
+									<tr>
+										<th>4.5x</th>
+										<td id="PLAWBCell45x"></td>
+										<td id="PLAWBWDCell45x"></td>
+									</tr>
+								</table>
+
+								<div id="LoanAmountInformationAlertId" class="alert alert-success">
+									<i class="fa fa-check-circle"></i>
+									<span id="LoanAmountInformationSpanId"></span>
+								</div>
+
+								<div class="alert alert-info">
+									<i class="fa fa-info-circle"></i>
+									<span>Please get an agreement in principle from your bank to get a more
+										accurate indication of how much you could borrow.</span>
+								</div>
+							</div>
+
+							<div class="col-md-12">
+								<h5 class="h5-custom">Your Monthly Mortgage Repayments</h5>
+								<p>Your monthly mortgage repayments can be seen below. The repayments are calculated
+									based on the property price and the deposit that you have provided. Please feel free
+									to change the mortgage term and the mortgage rate.</p>
+							</div>
+							<br>
+							<div class="col-md-8">
+								<div class="slider-container">
+									<h4>Mortgage</h4>
+									<input class="slider-input" type="range" min="1" max="100" value="50"
+										id="MortgageSliderInputId">
+									<span class="slider-span" id="MortgageSliderSpanId">£0</span>
+								</div>
+
+								<div class="slider-container">
+									<h4>Mortgage Term</h4>
+									<input class="slider-input" type="range" min="1" max="35" value="25"
+										id="MortgageTermSliderInputId">
+									<span class="slider-span" id="MortgageTermSliderSpanId">25 Years</span>
+								</div>
+
+								<div class="slider-container">
+									<h4>Mortgage Rate</h4>
+									<input class="slider-input" type="range" min="0" max="10" value="3"
+										id="MortgageRateSliderInputId">
+									<span class="slider-span" id="MortgageRateSliderSpanId">3%</span>
+								</div>
+
+							</div>
+							<div class="col-md-4">
+								<div class="information-container">
+									<h4>Your Monthly Repayments</h4>
+									<span>You are paying off the mortgage and the interest.</span>
+									<span class="information-container-repayment"
+										id="MonthlyMortgagePaymentId">£0</span>
+									<br>
+									<h4>Interest Only Repayments</h4>
+									<span>Interest-only repayments where you are only paying for
+										interest.</span>
+									<span class="information-container-repayment"
+										id="MonthlyInterestOnlyPaymentId">£0</span>
+								</div>
+							</div>
+
+							<div class="col-md-12">
+								<div class="section-break"></div>
+							</div>
+
+							<div class="col-md-12">
+								<h4 class="h4-custom">Monthly Expenses</h4>
+							</div>
+
+							<div class="col-md-6">
+								<p>This section will show you a summary of your monthly expenses and will give
+									you an indication of how much money you will have at the end of the month.
+								</p>
+								<br>
+								<h5 class="h5-custom">Your Monthly Expenses</h5>
+								<p>The table below shows your total monthly expenses and how much of your salary
+									you will have left after the expenses are paid for.</p>
+								<table class="summary-table">
+									<tr>
+										<th>Monthly Salary</th>
+										<th>Expenses</th>
+										<th>Salary After Expenses</th>
+									</tr>
+									<tr>
+										<td id="YourTotalSalaryExpenseCellID"></td>
+										<td id="YourTotalMonthlyExpensesCellId"></td>
+										<td id="YourTotalSalaryAfterExpenseCellId"></td>
+									</tr>
+								</table>
+
+								<br>
+								<div id="PartnersMonthlyExpensesContainerId">
+									<h5 class="h5-custom">Your Partner's Monthly Expenses</h5>
+									<p>The table below shows your partner's total monthly expenses and how much
+										of
+										their salary they will have left after expenses have been paid.</p>
+									<table class="summary-table">
+										<tr>
+											<th>Monthly Salary</th>
+											<th>Expenses</th>
+											<th>Salary After Expenses</th>
+										</tr>
+										<tr>
+											<td id="PartnersTotalSalaryExpenseCellID"></td>
+											<td id="PartnersTotalMonthlyExpensesCellId"></td>
+											<td id="PartnersTotalSalaryAfterExpenseCellId"></td>
+										</tr>
+									</table>
+								</div>
+
+								<br>
+								<div id="CombinedMonthlyExpensesContainerId">
+									<h5 class="h5-custom">Combined Monthly Expenses</h5>
+									<p>The table below shows the combined monthly expenses.</p>
+									<table class="summary-table">
+										<tr>
+											<th>Monthly Salary</th>
+											<th>Expenses</th>
+											<th>Salary After Expenses</th>
+										</tr>
+										<tr>
+											<td id="CombinedTotalSalaryExpenseCellID"></td>
+											<td id="CombinedTotalMonthlyExpensesCellId"></td>
+											<td id="CombinedTotalSalaryAfterExpenseCellId"></td>
+										</tr>
+									</table>
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<h5 class="h5-custom margin-top-none">Potential Monthly Expenses</h5>
+								<p>When buying a home you will need to take into account other monthly expenses
+									that you will end up paying. These expenses will include house insurance,
+									electricity bills, etc.</p>
+
+								<table class="summary-table">
+									<tr>
+										<th>Gas & Electricity Bill</th>
+										<td>£100</td>
+									</tr>
+									<tr>
+										<th>Water Bill</th>
+										<td>£35</td>
+									</tr>
+									<tr>
+										<th>Broadband Bill</th>
+										<td>£25 - £30</td>
+									</tr>
+									<tr>
+										<th>Home Insurance</th>
+										<td>£10 - £30</td>
+									</tr>
+									<tr>
+										<th>Possible Total Cost</th>
+										<td id="PossibleTotalMonthlyCostCellId"></td>
+									</tr>
+								</table>
+
+								<br>
+								<h5 class="h5-custom margin-top-none">Monthly Salary After Expenses</h5>
+								<p>It is important that you know how much money you will have left every month
+									after paying for the significant expenses.</p>
+								<table class="summary-table">
+									<tr>
+										<th>Salary After Expenses</th>
+										<td id="SalaryAfterExpensesId"></td>
+									</tr>
+									<tr>
+										<th>Salary After Expenses and Mortgage</th>
+										<td id="SalaryAfterExpensesAndMortgageId"></td>
+									</tr>
+									<tr>
+										<th>Salary After Expenses, Mortgage and Potential Expenses</th>
+										<td id="SalaryAfterExpensesAndPotentialExpenses"></td>
+									</tr>
+								</table>
+
+								<div id="CannotAffordMonthlyExpensesId" class="alert alert-danger"
+									style="display: none;">
+									<i class="fa fa-exclamation-circle"></i>
+									<span>It looks like you might not be able to cover all of your monthly
+										expenses after purchasing your property. It is recommended that you pay
+										off any outstaning loans or reduce your monthly expenses.</span>
+								</div>
+
+								<div id="CanAffordMonthlyExpensesId" class="alert alert-success" style="display: none;">
+									<i class="fa fa-check-circle"></i>
+									<span>It looks like you should be able to cover all monthly expenses after
+										purchasing your property.</span>
+								</div>
+							</div>
+
+							<div class="col-md-12">
+								<div class="section-break"></div>
+							</div>
+						</div>
+
+						<button id="ShowSummaryButtonId" class="btn btn-success custom-button"
+							onclick="ShowSummary()">Show Summary</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<button class="top-of-page-button" onclick="GoToTopOfThePage()" id="GoToTopOfThePageId">
+		<i class="fa fa-arrow-up arrow-up-custom"></i>
+	</button>
+
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+
+					<div class="footer-social-media-parent-container">
+						<span>Share On Social Media</span>
+
+						<div class="footer-social-media-icons">
+							<a href="https://www.facebook.com/sharer/sharer.php?kid_directed_site=0&sdk=joey&u=https%3A%2F%2Fprzemekmas.github.io%2FHouseAffordabilityTool%2Fhome.html&display=popup&ref=plugin&src=share_button"
+								target="_blank">
+								<i class="fa fa-facebook-square"></i>
+							</a>
+
+							<a href="https://www.linkedin.com/shareArticle?mini=true&url=https://przemekmas.github.io/HouseAffordabilityTool/home.html&title=House Affordability Tool"
+								target="_blank">
+								<i class="fa fa-linkedin-square"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-12">
+					<div class="footer-section-break"></div>
+				</div>
+				<div class="col-md-6 footer-left-container">
+					<i class="fa fa-copyright"></i>
+					<p class="footer-paragraph">2021 Przemyslaw Maslowski</p>
+				</div>
+				<div class="col-md-6 footer-right-container">
+					<p>House Affordability Tool 🏡</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+</body>
+
+</html>
+
+<script>
+
+	// Your monthly earnings
+	AddFancyDescription("YourMonthlyEarningsId", "MonthlyEarningsId", "Your Monthly Earnings");
+	AddMonthlyEarningsElement("SalaryContainerId", "SalaryInputId", "MonthlyEarningsId", "Your Annual Salary (Before Tax):");
+	AddMonthlyEarningsElement("SalaryBonusContainerId", "SalaryBonusInputId", "MonthlyEarningsId", "Your Annual Bonus (Optional):");
+	AddMonthlyEarningsElement("MonthlyEarningsContainerId", "MonthlyEarningsInputId", "MonthlyEarningsId", "Your Monthly Earnings (After Tax):");
+
+	// Partner monthly earnings
+	AddFancyDescription("YourPartnerMonthlyEarningsId", "PartnerMonthlyEarningsId", "Your Partner's Monthly Earnings");
+	AddMonthlyEarningsElement("PartnerSalaryContainerId", "PartnerSalaryInputId", "PartnerMonthlyEarningsId", "Your Partner's Annual Salary (Before Tax):");
+	AddMonthlyEarningsElement("PartnerSalaryBonusContainerId", "PartnerSalaryBonusInputId", "PartnerMonthlyEarningsId", "Your Partner's Annual Bonus (Optional):");
+	AddMonthlyEarningsElement("PartnerMonthlyEarningsContainerId", "PartnerMonthlyEarningsInputId", "PartnerMonthlyEarningsId", "Your Partner's Monthly Earnings (After Tax):");
+
+	// Monthly expenses
+	AddFancyDescription("YourMonthlyExpensesDescId", "MonthlyExpensesId", "Your Monthly Expenses");
+	AddExpenseElement("MonthlyExpensesId");
+
+	// Partner expenses
+	AddFancyDescription("YourPartnerMonthlyExpensesDescId", "PartnerMonthlyExpensesContentId", "Your Partner's Monthly Expenses");
+	AddPartnerExpenseElement("PartnerMonthlyExpensesContentId");
+
+	// House costs
+	AddMonthlyEarningsElement("HousePriceContainerId", "HousePriceInputId", "UpfrontCostsId", "Price Of The Property:");
+	AddMonthlyEarningsElement("HouseDepositContainerId", "HouseDepositInputId", "UpfrontCostsId", "Your Deposit:");
+
+	// Your savings
+	AddMonthlyEarningsElement("SavingsContainerId", "SavingsInputId", "LifeSavingsId", "Your Savings:");
+	AddMonthlyEarningsElement("PartnerSavingsContainerId", "PartnerSavingsInputId", "PartnerLifeSavingsId", "Your Partner's Savings:");
+
+	window.onscroll = function () { ShowScrollFunction() };
+
+</script>
