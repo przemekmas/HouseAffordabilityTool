@@ -5,26 +5,31 @@
 	<title>House Affordability Tool</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description"
+		content="UK House Affordability Tool - The tool allows you to identify possible house costs and helps you understand if you can afford to buy a house in the UK.">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/main.css?v=2.0.0">
 	<link rel="icon" href="images/HouseIcon.svg">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	<script src="js/main.js"></script>
+	<script src="js/main.js?v=2.0.0"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet">
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-P2518Q79WV"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
 		function gtag() { dataLayer.push(arguments); }
 		gtag('js', new Date());
-
 		gtag('config', 'G-P2518Q79WV');
 	</script>
 </head>
 
 <body>
-	<div class="navigation-header">
+	<div class="navigation-header" id="HouseNavigationHeaderId">
 		<div class="container text-center">
 			<h1>House Affordability Tool 🏡</h1>
 			<p>The house affordability tool aims to collect all of your house costs and expenses to figure out if you
@@ -35,9 +40,9 @@
 			</div>
 		</div>
 	</div>
-
+	<!-- 
 	<div class="container-fluid houses-background" id="HousesBackgroundId">
-	</div>
+	</div> -->
 
 	<div class="container">
 		<div class="row">
@@ -45,7 +50,7 @@
 				<div class="col-sm-6">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h3>Monthly Earnings</h3>
+							<h1 class="custom-panel-h1">Monthly Earnings</h1>
 							<p>Input your monthly and yearly salary to help us figure out how much you could borrow.</p>
 						</div>
 						<div class="panel-body">
@@ -68,7 +73,7 @@
 				<div class="col-sm-6">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h3>House Costs</h3>
+							<h1 class="custom-panel-h1">House Costs</h1>
 							<p>Provide the price of the property and your deposit.</p>
 						</div>
 						<div class="panel-body">
@@ -80,7 +85,7 @@
 				<div class="col-sm-6">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h3>Savings</h3>
+							<h1 class="custom-panel-h1">Savings</h1>
 							<p>Input your savings, excluding your house deposit.</p>
 						</div>
 						<div class="panel-body">
@@ -101,7 +106,7 @@
 			<div class="col-sm-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3>Monthly Expenses</h3>
+						<h1 class="custom-panel-h1">Monthly Expenses</h1>
 						<p>Please provide your monthly expenses such as insurance, phone bills, or
 							credit
 							card payments.</p>
@@ -135,7 +140,7 @@
 			<div class="col-sm-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3>Summary</h3>
+						<h1 class="custom-panel-h1">Summary</h1>
 						<p>Here is a summary of your house costs, savings, and monthly expenses.</p>
 					</div>
 					<div class="panel-body">

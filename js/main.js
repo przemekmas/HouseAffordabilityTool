@@ -821,7 +821,7 @@ function GoToTopOfThePage() {
 }
 
 function GoToStart() {
-	var houseBackgroundElement = document.getElementById("HousesBackgroundId");
+	var houseBackgroundElement = document.getElementById("HouseNavigationHeaderId");
 	var startPosition = houseBackgroundElement.offsetTop + houseBackgroundElement.offsetHeight;
 	document.body.scrollTop = startPosition;
 	document.documentElement.scrollTop = startPosition;
