@@ -77,7 +77,7 @@ function GetDeleteButtonElement(monthlyExpenseContainerId, monthlyExpenseId, isP
 	closeButtonDivElement.setAttribute("class", "monthly-expense-input col-sm-2")
 
 	var closeButtonElement = document.createElement("button");
-	closeButtonElement.setAttribute("class", "btn btn-danger");
+	closeButtonElement.setAttribute("class", "btn btn-danger custom-button");
 	closeButtonElement.setAttribute("onclick", "DeleteExpenseElement(\"" + monthlyExpenseContainerId + "\", \"" + monthlyExpenseId + "\", " + isPartner + ")");
 	closeButtonElement.style.display = "inline-block";
 	closeButtonElement.innerText = "Delete";
