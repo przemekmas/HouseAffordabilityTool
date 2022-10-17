@@ -53,13 +53,13 @@ html {
 .top-of-page-button {
 	display: none;
 	position: fixed;
-	right: 30px;
-	bottom: 30px;
+	right: 100px;
+	bottom: 18px;
 	z-index: 99;
 	border-radius: 50%;
 	border: 1px solid white;
-	width: 48px;
-	height: 48px;
+	width: 64px;
+	height: 64px;
 	box-shadow: 0 1px 1px rgb(0 0 0 / 5%);
 	background-color: #2b2b2b;
 	justify-content: space-around;
